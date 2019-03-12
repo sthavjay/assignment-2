@@ -41,7 +41,6 @@ float Person:: totalPay(){
 }
 
 string Person:: fullName(){
- Person name;
- string fname = name.firstName +" "+name.lastName;
- return fname;
+name = firstName +" "+lastName;
+ return name;
 }
