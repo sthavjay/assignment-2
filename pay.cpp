@@ -2,34 +2,31 @@
 #include <fstream>
 #include <string>
 #include<iomanip>
-#include "person.h"
+#include "person.cpp"
 
 using namespace std;
 
-void readData(Person employees[],int n){
+void readData(Person employees[],int &n){
   string fName;
   string lName;
   float rate;
   float hours;
-  int i =0;
+  Person i ;
   ifstream inputfile;
   inputfile.open ("input.txt");
   if (inputfile.is_open()){
 // vector<Person> persons //creating a vector "persons"
-  //  while (inputfile>>fName>>lName>>rate>>hours))
-  //    cout<<fName<<lName<<rate<<hours<< endl;
-  //  persons.push_back(n)
   while(!inputfile.eof()){
   inputfile>>fName>>lName>>rate>>hours;
 
-  employees[i].setFirstName(fName);
-  employees[i].setLastName(lName);
-  employees[i].setPayRate(rate);
-  employees[i].setHoursWorked(hours);
-  i++;
-  cout<<fName<<lName<<rate<<hours<<endl;
+  i.setFirstName(fName);
+  i.setLastName(lName);
+  i.setPayRate(rate);
+  i.setHoursWorked(hours);
+  employees[n]=i;
+  n++;
+ cout<<fName<<" "<<lName<< " "<<rate << " "<<hours<<endl;
 }
-
   inputfile.close();
 }
 }
@@ -45,12 +42,9 @@ outputfile.close();
 
 int main()
 {
-  int n=20;
-  string lastName;
-  string firstName;
-  float payRate;
-  float hoursWorked;
-  Person employees[n];
+  int n=0;
+
+  Person employees[20];
   //for (int i =0; i< n;i++){
   //cout << employees[i]<< endl;
   readData(employees,n);
